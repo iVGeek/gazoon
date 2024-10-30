@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout repository content
@@ -39,6 +37,9 @@ jobs:
           git config --local user.name "iVGeek"
           git add -A
           git commit -m "keep alive" -a
+
+      - name: Pull latest changes
+        run: git pull origin main
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
